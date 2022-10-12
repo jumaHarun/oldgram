@@ -26,8 +26,8 @@ This is my solution to the Scrimba's Oldagram Solo project from the Essential CS
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Solution URL: [GitHub](https://github.com/jumaHarun/oldgram)
+- Live Site URL: [Oldagram on Netlify](https://jharun-oldagram.netlify.app/)
 
 ## My process
 
