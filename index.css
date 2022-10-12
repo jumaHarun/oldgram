@@ -1,0 +1,119 @@
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Remove default margin */
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+/* Set core root defaults */
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+/* Set core body defaults */
+body {
+  min-height: 100vh;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 13px;
+}
+
+/* Make images easier to work with */
+img,
+picture {
+  max-width: 100%;
+}
+
+
+/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+   scroll-behavior: auto;
+  }
+  
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+.flex {
+    display: flex;
+}
+
+.bold {
+    font-weight: 700;
+}
+
+.thumbnail {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+}
+
+header,
+main {
+    max-width: 35rem;
+    margin: 0 auto;
+}
+
+.post-content {
+  padding-block: .5em;
+}
+
+.icon {
+    width: 23px;
+    margin-right: .5em;
+}
+
+.icon:hover {
+  opacity: .5;
+}
+
+.liked {
+  background: url('./images/icon-heart-red.png');
+}
+
+.post-image {
+  text-align: center;
+}
+
+.nav,
+.post-body {
+    padding-inline: 15px;
+}
+
+.nav {
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #c6c6c6;
+}
+
+.logo {
+    max-width: 130px;
+}
+
+.user-info {
+    align-items: center;
+    gap: .5rem;
+    padding: 10px 15px;
+}
