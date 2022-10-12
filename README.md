@@ -6,6 +6,7 @@ This is my solution to the Scrimba's Oldagram Solo project from the Essential CS
 
 - [Overview](#overview)
   - [The challenge](#the-challenge)
+  - [Stretch Goals](#stretch-goals)
   - [Screenshot](#screenshot)
   - [Links](#links)
 - [My process](#my-process)
@@ -20,9 +21,13 @@ This is my solution to the Scrimba's Oldagram Solo project from the Essential CS
 
 ![screenshot of Oldagram project requirements](./images//oldagram-req.png)
 
+### Stretch Goals
+
+![screenshot of Oldagram project stretch goals](./images/oldagram-stretch-goals.png)
+
 ### Screenshot
 
-![](./screenshot.jpg)
+![](./images/Oldagram.png)
 
 ### Links
 
