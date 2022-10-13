@@ -1,40 +1,24 @@
-const posts = [
-  {
-      name: "Vincent van Gogh",
-      username: "vincey1853",
-      location: "Zundert, Netherlands",
-      avatar: "images/avatar-vangogh.jpg",
-      post: "images/post-vangogh.jpg",
-      comment: "just took a few mushrooms lol",
-      likes: 21
-  },
-  {
-      name: "Gustave Courbet",
-      username: "gus1819",
-      location: "Ornans, France",
-      avatar: "images/avatar-courbet.jpg",
-      post: "images/post-courbet.jpg",
-      comment: "i'm feelin a bit stressed tbh",
-      likes: 4
-  },
-      {
-      name: "Joseph Ducreux",
-      username: "jd1735",
-      location: "Paris, France",
-      avatar: "images/avatar-ducreux.jpg",
-      post: "images/post-ducreux.jpg",
-      comment: "gm friends! which coin are YOU stacking up today?? post below and WAGMI!",
-      likes: 152
-  }
-]
+import { posts } from './scripts/data.js'
 
-document.getElementById('root').innerHTML = getPostHtml(posts)
-
-function getPostHtml(arr) {
+function getPostHtml() {
   let postHtml = ''
 
-  for (const obj of arr) {
-    const { name, username, location, avatar, post, comment, likes} = obj
+  posts.forEach(post => {
+    const { name, username, location, avatar, postUrl, comment, likes, uuid} = post
+
+    let heartClass 
+    let iconClass
+    let icon
+
+    if(post.isLiked) {
+      heartClass = 'liked'
+      iconClass = 'fa-solid'
+    } else {
+      iconClass = 'fa-regular'
+      icon = 'icon'
+    }
+
+
     postHtml += `
     <div class="post-content">
       <div class="user-info flex">
@@ -51,15 +35,13 @@ function getPostHtml(arr) {
       </div>
 
       <div class="post-image">
-          <img src="${post}">
+          <img src="${postUrl}" data-image="${uuid}">
       </div>
 
       <div class="post-body">
           <div class="icons">
-              <img
-              src="./images/icon-heart.png"
-              alt="like icon"
-              class="icon like">
+            <i class="${iconClass} fa-heart ${heartClass} ${icon}" 
+            data-heart="${uuid}"></i>
 
               <img
               src="./images/icon-comment.png"
@@ -77,27 +59,16 @@ function getPostHtml(arr) {
       </div>
     </div>
     `
-  }
+  })
 
   return postHtml
 }
 
+function render() {
+  document.getElementById('root').innerHTML = getPostHtml()
+}
 
-const likeIcons = document.querySelectorAll('.like')
-const postImage = document.querySelectorAll('.post-image')
-const likeCount = document.querySelectorAll('.like-count')
-
-likeIcons.forEach((icon, index) => {
-  icon.addEventListener('click', () => {
-    likeCount[index].textContent = posts[index].likes + 1
-  })
-})
-
-postImage.forEach((image, index) => {
-  image.addEventListener('dblclick', () => {
-    likeCount[index].textContent = posts[index].likes + 1
-  })
-})
+render()
 
 
 fetch('https://randomuser.me/api/')
@@ -107,3 +78,30 @@ fetch('https://randomuser.me/api/')
   	<img src=${data.results[0].picture.large} class="thumbnail">
   `;
 })
+
+document.addEventListener('click', (e)=>{
+  if(e.target.dataset.heart) {
+    handleLikeClicks(e.target.dataset.heart)
+  }
+})
+
+document.addEventListener('dblclick', (e)=>{
+  if(e.target.dataset.image) {
+    handleLikeClicks(e.target.dataset.image)
+  }
+})
+
+function handleLikeClicks(postId) {
+  const targetPostObj = posts.filter(post => 
+      post.uuid === postId )[0]
+  
+  if(targetPostObj.isLiked) {
+    targetPostObj.likes--
+  } else {
+    targetPostObj.likes++
+  }
+  
+  targetPostObj.isLiked = !targetPostObj.isLiked
+
+  render()
+}

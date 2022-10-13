@@ -64,9 +64,16 @@ picture {
     font-weight: 700;
 }
 
+i {
+  font-size: 1.6rem;
+}
+
+.liked {
+  color: #e40000;
+}
+
 .thumbnail {
-    height: 50px;
-    width: 50px;
+    height: 2.7rem;
     border-radius: 50%;
 }
 
@@ -80,17 +87,19 @@ main {
   padding-block: .5em;
 }
 
+.icons {
+  display: flex;
+  align-items: start;
+  gap: .5em;
+}
+
 .icon {
-    width: 23px;
-    margin-right: .5em;
+  height: 1.6rem;
 }
 
-.icon:hover {
+.icon:hover,
+.icon:active {
   opacity: .5;
-}
-
-.liked {
-  background: url('./images/icon-heart-red.png');
 }
 
 .post-image {
