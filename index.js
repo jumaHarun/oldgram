@@ -6,18 +6,9 @@ function getPostHtml() {
   posts.forEach(post => {
     const { name, username, location, avatar, postUrl, comment, likes, uuid} = post
 
-    let heartClass 
-    let iconClass
-    let icon
-
-    if(post.isLiked) {
-      heartClass = 'liked'
-      iconClass = 'fa-solid'
-    } else {
-      iconClass = 'fa-regular'
-      icon = 'icon'
-    }
-
+    const heartClass = post.isLiked ? 'liked' : ''
+    const iconClass = post.isLiked ? 'fa-solid' : 'fa-regular'
+    const icon = !post.isLiked ? 'icon' : ''
 
     postHtml += `
     <div class="post-content">
